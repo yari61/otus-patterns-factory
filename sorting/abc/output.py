@@ -1,11 +1,9 @@
 from __future__ import annotations
 from abc import ABC, abstractmethod
-from typing import List
-
-from .comparable import Comparable
+from typing import List, Any
 
 
 class ABCOutput(ABC):
     @abstractmethod
-    def write(self, data: List[Comparable]) -> None:
+    def write(self, data: List[Any]) -> None:
         pass
