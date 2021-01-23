@@ -12,7 +12,7 @@ class Merge(ABCAlgorithm):
         self._merge_sort(new_data)
         return new_data
 
-    def _merge_sort(self, data: List[Comparable]) -> List[Comparable]:
+    def _merge_sort(self, data: List[Comparable]) -> None:
         if len(data) > 1:
             mid = len(data)//2
             L = data[:mid]
