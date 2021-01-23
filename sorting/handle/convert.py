@@ -5,20 +5,28 @@ from typing import List, Any
 from sorting.abc import ABCDataHandler
 
 
-class Convert(ABC):
+class ABCConvert(ABC):
     @abstractmethod
     def __call__(self, item: Any) -> Any:
+        """Converts an item to some type
+
+        Args:
+            item (Any): item to convert
+        
+        Raises:
+            ValueError: if item could not be converted
+
+        Returns:
+            Any: converted item
+        """
         pass
 
 
 class ConvertItems(ABCDataHandler):
     __slots__ = ("_convert_func",)
 
-    def __init__(self, convert_func: Convert) -> None:
+    def __init__(self, convert_func: ABCConvert) -> None:
         self._convert_func = convert_func
 
-    def __call__(self, data: List[str]) -> List[float]:
-        converted_data = list()
-        for item in data:
-            converted_data.append(self._convert_func(item=item))
-        return converted_data
+    def __call__(self, data: List[Any]) -> List[Any]:
+        return [item for item in map(self._convert_func, data)]
