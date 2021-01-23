@@ -1,6 +1,6 @@
 from __future__ import annotations
 from os import PathLike
-from typing import List, Any
+from typing import List
 
 from sorting.abc import ABCInput
 
